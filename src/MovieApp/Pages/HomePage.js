@@ -1,7 +1,6 @@
 import { useState } from "react";
 import AddMovieModal from "../Components/AddMovieModal";
 import MovieList from "../Components/MovieList";
-import NavBar from "../Components/NavBar";
 import { movies } from "../Data/Data";
 
 const HomePage = ({ search }) => {
