@@ -25,7 +25,7 @@ import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import DeleteIcon from "@mui/icons-material/Delete";
-
+// refactored in Style.js
 const style = {
   position: "absolute",
   top: "50%",
@@ -140,24 +140,26 @@ function MovieApp() {
   const deleteMovie = (id) => {
     setMoviesData(moviesData.filter((movie) => movie.id !== id));
   };
+  // Group all components in HomePage.js˝
   return (
     <div>
+      {/*refactored in Navbar.js */}
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar position='static'>
           <Toolbar>
             <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
+              size='large'
+              edge='start'
+              color='inherit'
+              aria-label='open drawer'
               sx={{ mr: 2 }}
             >
               <MenuIcon />
             </IconButton>
             <Typography
-              variant="h6"
+              variant='h6'
               noWrap
-              component="div"
+              component='div'
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
               Movie app ws
@@ -167,7 +169,7 @@ function MovieApp() {
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder="Search…"
+                placeholder='Search…'
                 inputProps={{ "aria-label": "search" }}
                 onChange={handleSearch}
               />
@@ -175,19 +177,23 @@ function MovieApp() {
           </Toolbar>
         </AppBar>
       </Box>
-
-      <div className="d-flex">
+      {/*refactored in MovieList.js */}
+      <div className='d-flex'>
         {filteredMovies.map((movie) => {
+          {
+            /*refactored in Card.js */
+          }
+
           return (
-            <Card sx={{ maxWidth: 345 }} className="card">
+            <Card sx={{ maxWidth: 345 }} className='card'>
               <CardHeader
                 avatar={
-                  <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                  <Avatar sx={{ bgcolor: red[500] }} aria-label='recipe'>
                     {movie.title[0]}
                   </Avatar>
                 }
                 action={
-                  <IconButton aria-label="settings">
+                  <IconButton aria-label='settings'>
                     <MoreVertIcon />
                   </IconButton>
                 }
@@ -195,36 +201,36 @@ function MovieApp() {
                 subheader={movie.year}
               />
               <CardMedia
-                component="img"
-                height="194"
+                component='img'
+                height='194'
                 image={movie.posterUrl}
                 alt={`${movie.title} poster`}
               />
               <CardContent>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant='body2' color='text.secondary'>
                   {movie.plot}
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
                 <IconButton
-                  aria-label="add to favorites"
+                  aria-label='add to favorites'
                   onClick={() => deleteMovie(movie.id)}
                 >
                   <DeleteIcon />
                 </IconButton>
-                <IconButton aria-label="share">
+                <IconButton aria-label='share'>
                   <ShareIcon />
                 </IconButton>
                 <ExpandMore
                   expand={expanded}
                   onClick={handleExpandClick}
                   aria-expanded={expanded}
-                  aria-label="show more"
+                  aria-label='show more'
                 >
                   <ExpandMoreIcon />
                 </ExpandMore>
               </CardActions>
-              <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <Collapse in={expanded} timeout='auto' unmountOnExit>
                 <CardContent>
                   <Typography paragraph>Details :</Typography>
                   <Typography paragraph>{movie.plot}</Typography>
@@ -242,46 +248,47 @@ function MovieApp() {
           );
         })}
       </div>
+      {/*refactored in AddMovieModal.js */}
       <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id='modal-modal-title' variant='h6' component='h2'>
             Add new movie
           </Typography>
           <TextField
-            id="outlined-basic"
-            label="Movie tite"
-            variant="outlined"
-            placeholder="Movie Title"
-            name="title"
+            id='outlined-basic'
+            label='Movie tite'
+            variant='outlined'
+            placeholder='Movie Title'
+            name='title'
             onChange={handleChange}
           />
           <TextField
-            id="outlined-basic"
-            label="Movie plot"
-            variant="outlined"
-            placeholder="Movie Plot"
-            name="plot"
+            id='outlined-basic'
+            label='Movie plot'
+            variant='outlined'
+            placeholder='Movie Plot'
+            name='plot'
             onChange={handleChange}
           />
           <TextField
-            id="outlined-basic"
-            label="Movie poster"
-            variant="outlined"
-            placeholder="Movie Poster URL"
-            name="posterUrl"
+            id='outlined-basic'
+            label='Movie poster'
+            variant='outlined'
+            placeholder='Movie Poster URL'
+            name='posterUrl'
             onChange={handleChange}
           />
           <Button
             onClick={() => {
               addMovie({ ...newMovie, id: Math.random() * 1000 });
             }}
-            variant="contained"
+            variant='contained'
           >
             Add
           </Button>
@@ -289,7 +296,7 @@ function MovieApp() {
             onClick={() => {
               handleClose();
             }}
-            variant="contained"
+            variant='contained'
           >
             Close
           </Button>
