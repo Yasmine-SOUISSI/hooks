@@ -1,13 +1,14 @@
-import { useState } from "react";
-import "./App.css";
-import Hooks from "./Hooks/Hooks";
-import MovieApp from "./MovieApp/MovieApp";
-import State from "./State/State";
-
+import HomePage from "./MovieApp/Pages/HomePage";
+import { Routes, Route } from "react-router-dom";
+import MoviesDetails from "./MovieApp/Pages/MoviesDetails";
 function App() {
   return (
     <>
-      <MovieApp />
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/movies/:movieId' element={<MoviesDetails />} />
+        <Route path='*' element={<h1>404 Not Found</h1>} />
+      </Routes>
     </>
   );
 }
