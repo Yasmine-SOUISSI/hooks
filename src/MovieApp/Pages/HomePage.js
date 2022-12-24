@@ -4,13 +4,11 @@ import MovieList from "../Components/MovieList";
 import NavBar from "../Components/NavBar";
 import { movies } from "../Data/Data";
 
-const HomePage = () => {
+const HomePage = ({ search }) => {
   const [moviesData, setMoviesData] = useState(movies);
-  const [search, setSearch] = useState("");
 
   return (
     <>
-      <NavBar setSearch={setSearch} />
       <MovieList
         search={search}
         moviesData={moviesData}

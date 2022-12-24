@@ -75,10 +75,15 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+const textDecorationNone = {
+  textDecoration: "none",
+};
+
 export {
   style,
   Search,
   SearchIconWrapper,
+  textDecorationNone,
   StyledInputBase,
   ExpandMore,
   dFlex,

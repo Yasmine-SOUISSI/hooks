@@ -16,11 +16,13 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { card, ExpandMore } from "../Shared/Style";
 import { red } from "@mui/material/colors";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
+import { isPathActive } from "../Helpers/functions";
 
 const MovieCard = ({ movie, deleteMovie }) => {
   const [expanded, setExpanded] = useState(false);
+  const { pathname } = useLocation();
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -52,17 +54,21 @@ const MovieCard = ({ movie, deleteMovie }) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton
-          aria-label='add to favorites'
-          onClick={() => deleteMovie(movie.id)}
-        >
-          <DeleteIcon />
-        </IconButton>
-        <Link to={`/movies/${movie.id}`}>
-          <IconButton aria-label='share'>
-            <ShareIcon />
-          </IconButton>
-        </Link>
+        {!isPathActive(pathname, "/movies") && (
+          <>
+            <IconButton
+              aria-label='add to favorites'
+              onClick={() => deleteMovie(movie.id)}
+            >
+              <DeleteIcon />
+            </IconButton>
+            <Link to={`/movies/${movie.id}`}>
+              <IconButton aria-label='share'>
+                <ShareIcon />
+              </IconButton>
+            </Link>
+          </>
+        )}
 
         <ExpandMore
           expand={expanded}

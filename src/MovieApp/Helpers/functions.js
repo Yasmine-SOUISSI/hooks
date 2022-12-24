@@ -9,3 +9,7 @@ export const isNullOrUndefined = (value) => {
 export const isObject = (value) => {
   return typeof value === "object";
 };
+
+export const isPathActive = (currentPath, pathname) => {
+  return currentPath.includes(pathname);
+};
