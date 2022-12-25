@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage search={search} />} />
         <Route path='/movies/:movieId' element={<MoviesDetails />} />
-        <Route path='*' element={<h1>404 Not Found</h1>} />
+        <Route path='*' element={<h1>404 Not Found Page</h1>} />
       </Routes>
     </>
   );
